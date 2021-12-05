@@ -50,16 +50,16 @@ const Home = () => {
           {/* 1) TextField */}
           <TextField
             placeholder="Enter Your First Name"
-            label="First Name"
+            label="Name"
             variant="standard"
             fullWidth
             className={classes.inputField}
-            name="firstName"
+            name="name"
             inputRef={register({
-              required: "First Name is required.",
+              required: "Name is required.",
             })}
-            error={Boolean(errors.firstName)}
-            helperText={errors.firstName?.message}
+            error={Boolean(errors.name)}
+            helperText={errors.name?.message}
           />
 
           {/* 2) TextField */}

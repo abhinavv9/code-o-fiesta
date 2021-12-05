@@ -1,6 +1,6 @@
 import "./styles/App.css";
 // import { CssBaseline } from "@material-ui/core";
-import Home from "./Home";
+import Form from "./Form";
 import Logo from './assets/logo.png'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="bg">
     <img src={Logo} alt="logo" className="logo" />
       {/* <CssBaseline /> */}
-      <Home />
+      <Form />
     </div>
   );
 }
