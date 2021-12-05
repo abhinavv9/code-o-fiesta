@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TextField,
   FormControl,
@@ -11,6 +11,7 @@ import {
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm, Controller } from "react-hook-form";
+import Validator from './Validator';
 
 const useStyles = makeStyles((theme) => ({
   inputField: {
@@ -22,11 +23,18 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
+  const [email, setEmail] = useState()
+  const [phone, setPhone] = useState()
 
   const { register, handleSubmit, control, errors } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    const { name, CollegeEmail, branch, pol, username, phone } = data;
+    setEmail(CollegeEmail)
+    setPhone(phone)
   };
+
+  const result = Validator(email, phone)
+  console.log(result)
 
   const Branches = [
     "CSE",
