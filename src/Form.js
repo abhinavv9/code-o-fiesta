@@ -27,14 +27,19 @@ const Home = () => {
   const [phone, setPhone] = useState()
 
   const { register, handleSubmit, control, errors } = useForm();
+  const handlechange =(e)=>{
+     
+  }
+  
   const onSubmit = (data) => {
     const { name, CollegeEmail, branch, pol, username, phone } = data;
-    setEmail(CollegeEmail)
-    setPhone(phone)
+    console.log( name, CollegeEmail, branch, pol, username, phone)
+
+    const result = Validator(email, phone)
+    console.log(result)
   };
 
-  const result = Validator(email, phone)
-  console.log(result)
+
 
   const Branches = [
     "CSE",
@@ -76,8 +81,10 @@ const Home = () => {
             label="College Email"
             variant="standard"
             fullWidth
+          
             className={classes.inputField}
             name="CollegeEmail"
+            onChange = {(e)=>{setEmail(e.target.value)} }
             inputRef={register({
               required: "College Email is required.",
             })}
