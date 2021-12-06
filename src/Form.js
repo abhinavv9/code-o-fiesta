@@ -11,7 +11,7 @@ import {
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm, Controller } from "react-hook-form";
-import Validator from './Validator';
+import { ValidateEmail, ValidatePhone } from "./Validator";
 
 const useStyles = makeStyles((theme) => ({
   inputField: {
@@ -23,23 +23,22 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const [email, setEmail] = useState()
-  const [phone, setPhone] = useState()
+  const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
 
   const { register, handleSubmit, control, errors } = useForm();
-  const handlechange =(e)=>{
-     
-  }
-  
+  const handlechange = (e) => {};
+
   const onSubmit = (data) => {
     const { name, CollegeEmail, branch, pol, username, phone } = data;
-    console.log( name, CollegeEmail, branch, pol, username, phone)
+    console.log(name, CollegeEmail, branch, pol, username, phone);
 
-    const result = Validator(email, phone)
-    console.log(result)
+    const resultEmail = ValidateEmail(email);
+    console.log(resultEmail);
+
+    const resultPhone = ValidatePhone(phone)
+    console.log(resultPhone)
   };
-
-
 
   const Branches = [
     "CSE",
@@ -81,10 +80,11 @@ const Home = () => {
             label="College Email"
             variant="standard"
             fullWidth
-          
             className={classes.inputField}
             name="CollegeEmail"
-            onChange = {(e)=>{setEmail(e.target.value)} }
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             inputRef={register({
               required: "College Email is required.",
             })}
@@ -174,15 +174,16 @@ const Home = () => {
             error={Boolean(errors.phone)}
             helperText={errors.phone?.message}
           />
-
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            className="button"
-          >
-            Register
-          </Button>
+          <div className="button-div">
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              className="button"
+            >
+              Register
+            </Button>
+          </div>
         </form>
       </div>
     </div>
